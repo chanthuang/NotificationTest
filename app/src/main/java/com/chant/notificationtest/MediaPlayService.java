@@ -28,7 +28,6 @@ public class MediaPlayService extends Service {
      */
     private RemoteViews mBigRemoteViews;
 
-    private NotificationManager mNotificationManager;
     private Notification mNotification;
 
     private static final String REQUEST_CODE_ACTION = "MediaPlayerAction";
@@ -105,8 +104,8 @@ public class MediaPlayService extends Service {
         }
         mNotification.contentView = mRemoteViews;
         mNotification.flags = Notification.FLAG_ONGOING_EVENT;
-        mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotificationManager.notify(1, mNotification);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(1, mNotification);
     }
 
     private RemoteViews getContentView(@LayoutRes int layoutResId) {
@@ -143,7 +142,8 @@ public class MediaPlayService extends Service {
         if (mBigRemoteViews != null) {
             mBigRemoteViews.setTextViewText(R.id.button_play, isPlaying ? "暂停" : "播放");
         }
-        mNotificationManager.notify(1, mNotification);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(1, mNotification);
     }
 
 }
