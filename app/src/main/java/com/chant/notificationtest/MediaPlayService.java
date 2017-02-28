@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
@@ -27,7 +28,7 @@ public class MediaPlayService extends Service {
      * 状态栏上的播放控制器(展开状态)
      */
     private RemoteViews mBigRemoteViews;
-
+    private static final int NOTIFICATION_ID = 1;
     private Notification mNotification;
 
     private static final String REQUEST_CODE_ACTION = "MediaPlayerAction";
@@ -105,7 +106,7 @@ public class MediaPlayService extends Service {
         mNotification.contentView = mRemoteViews;
         mNotification.flags = Notification.FLAG_ONGOING_EVENT;
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(1, mNotification);
+        notificationManager.notify(NOTIFICATION_ID, mNotification);
     }
 
     private RemoteViews getContentView(@LayoutRes int layoutResId) {
@@ -143,7 +144,12 @@ public class MediaPlayService extends Service {
             mBigRemoteViews.setTextViewText(R.id.button_play, isPlaying ? "暂停" : "播放");
         }
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(1, mNotification);
+        notificationManager.notify(NOTIFICATION_ID, mNotification);
+    }
+
+    public void cancelNotification(int noticeId) {
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.cancel(noticeId);
     }
 
 }
