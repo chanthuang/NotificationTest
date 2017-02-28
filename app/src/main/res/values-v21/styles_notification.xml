@@ -1,0 +1,29 @@
+<resources>
+
+    <style name="NotificationTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Notification.Title</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="NotificationAuthor">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Notification.Line2</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="NotificationButton">
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Notification.Info</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+</resources>
