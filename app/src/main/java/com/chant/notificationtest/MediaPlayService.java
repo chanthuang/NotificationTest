@@ -115,6 +115,7 @@ public class MediaPlayService extends Service {
         remoteViews.setTextViewText(R.id.book_title, "书名");
         remoteViews.setTextViewText(R.id.book_author, "作者");
         remoteViews.setTextViewText(R.id.button_play, isPlaying ? "暂停" : "播放");
+        remoteViews.setInt(R.id.button_icon, "setColorFilter", getIconColor());
 
         // 点击事件
         /* 上一首按钮 */
@@ -136,6 +137,10 @@ public class MediaPlayService extends Service {
         PendingIntent nextPendingIntent = PendingIntent.getService(getApplicationContext(), BUTTON_NEXT, nextIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(R.id.button_next, nextPendingIntent);
         return remoteViews;
+    }
+
+    private int getIconColor() {
+        return 0xFF808080;
     }
 
     private void updateRemoteView() {
